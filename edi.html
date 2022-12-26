@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name ="viewport" content="width=device-width, 
+    initial-scale=1.0">
+    
+    
+<title>Group project</title>
+</head>
+<body>
+    <h1>Project title: Top 100 best movies<br>Project team members:<br><h2>Anastasiia Chorna<br>Paweł Burda<br>Jan Doniec</h2></h1>
+    <div class ="container">
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Rank</th>
+                <th scope="col">Title</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Released</th>
+                <th scope="col">Director</th>
+                <th scope="col">Duration</th>
+             
+                
+            </tr>
+        </thead>
+        <tbody id="table_body">
+
+
+        </tbody>
+      </table>
+    </div>
+    <script>
+
+        fetch('https://my.api.mockaroo.com/topfilms.json?key=6bb78e90').then((data)=>{
+
+            
+        //console.log(data); json format
+        return data.json();//converted to object
+        }).then((objectData)=>{
+            console.log(objectData[0].Rank);
+        
+            let tableData="";
+            objectData.map((values)=>{
+                tableData+=`<tr>
+                    <td>${values.Rank}</td>
+                    <td>${values.Title}</td>
+                    <td>${values.Genre}</td>
+                    <td>${values.Released}</td>
+                    <td>${values.Director}</td>
+                    <td>${values.Duration}</td>
+                   
+                </tr>`;
+            });
+            document.getElementById("table_body").
+            innerHTML=tableData;
+            
+        })
+        
+        
+    </script>
+</body>
+</html>
