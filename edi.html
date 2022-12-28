@@ -105,19 +105,24 @@
       .then((data) => data.json())
       .then((objectData) => {
         const durationCounts = {
-          "0-120": 0,
-          "121-": 0,
+          "0-60": 0,
+          "61-120": 0,
+          "121-180": 0,
+          "181+": 0
         };
     
         objectData.forEach((movie) => {
-          const duration = parseInt(movie.Duration, 10);
-          if (duration <= 60) {
-            durationCounts["0-120"]++;
-          } else (duration <= 120) {
-            durationCounts["121-"]++;
-
-          }
-        });
+      const duration = parseInt(movie.Duration, 10);
+      if (duration <= 60) {
+        durationCounts["0-60"]++;
+      } else if (duration <= 120) {
+        durationCounts["61-120"]++;
+      } else if (duration <= 180) {
+        durationCounts["121-180"]++;
+      } else {
+        durationCounts["181+"]++;
+      }
+    });
     
         const ctx = document.getElementById('durationChart').getContext('2d');
         const chart = new Chart(ctx, {
