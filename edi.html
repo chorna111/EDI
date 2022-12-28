@@ -96,15 +96,45 @@
                 }
             }
         });
-    });
+    });</script>
 
+    <canvas id="durationChart"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script>
+    fetch('https://my.api.mockaroo.com/topfilms.json?key=6bb78e90')
+      .then((data) => data.json())
+      .then((objectData) => {
+        const durationCounts = {
+          "0-120": 0,
+          "121-": 0,
+        };
+    
+        objectData.forEach((movie) => {
+          const duration = parseInt(movie.Duration, 10);
+          if (duration <= 60) {
+            durationCounts["0-120"]++;
+          } else (duration <= 120) {
+            durationCounts["121-"]++;
 
-</script>
-
-
-
-
-
+          }
+        });
+    
+        const ctx = document.getElementById('durationChart').getContext('2d');
+        const chart = new Chart(ctx, {
+        type: 'pie',
+    
+          data: {
+            labels: Object.keys(durationCounts),
+            datasets: [{
+              label: 'Movie Duration Distribution',
+              backgroundColor: '#f75a4f',
+              data: Object.values(durationCounts)
+            }]
+          },
+          options: {}
+        });
+      });
+    </script>
+    
 </body>
-
 </html>
