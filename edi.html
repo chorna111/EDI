@@ -61,16 +61,6 @@
       <img src="tape.png" alt="">
     </p>
     </div>
-<<<<<<< HEAD
-  <script>
-    fetch('https://my.api.mockaroo.com/topfilms.json?key=6bb78e90').then((data) => {
-      return data.json();
-    }).then((objectData) => {
-      console.log(objectData[0].Rank);
-      let tableData = "";
-      objectData.map((values) => {
-        tableData += `<tr>
-=======
     <script>
         fetch('https://my.api.mockaroo.com/topfilms.json?key=6bb78e90').then((data)=>{
             return data.json();
@@ -79,7 +69,6 @@
             let tableData="";
             objectData.map((values)=>{
                 tableData+=`<tr>
->>>>>>> main
                     <td>${values.Rank}</td>
                     <td>${values.Title}</td>
                     <td>${values.Genre}</td>
@@ -205,9 +194,4 @@
     </p>
   </footer>
 </body>
-<<<<<<< HEAD
-
 </html>
-=======
-</html>
->>>>>>> main
