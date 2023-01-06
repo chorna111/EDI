@@ -10,7 +10,7 @@ h2 {
     font-size: 1rem;
     text-align: center;
     font-weight: bold;
-    margin-bottom: 8vh;
+    margin-bottom: 2vh;
 }
 h3 {
     font-size: 1.5rem;
@@ -19,14 +19,32 @@ h3 {
     margin-bottom: 4vh;
 }
 header {
-    background-image: linear-gradient(to bottom, #f0f0f0, #f0f0f0, #f0f0f0, transparent)
+    background-color: #f0f0f0;
+    border-bottom: dashed #212529 5px;
 }
 
 table {
+    display: inline-block;
     color: white;
     background-color: #f0f0f0;
 }
-
+.container{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    min-width: 100%;
+    margin-inline: 0px;
+    padding-top: 8vh;
+}
+.tape{
+    display: inline-block;
+}
+table{
+    width: 50%;
+}
+img{
+    width: 90%;
+}
 th {
     background-color: #212529;
     text-align: center;

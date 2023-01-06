@@ -36,6 +36,9 @@
     </h2>
   </header>
   <div class="container">
+    <p class="side">
+      <img src="tape.png" alt="">
+    </p>
     <table class="table table-bordered">
       <thead class="table-dark">
         <tr>
@@ -54,7 +57,10 @@
 
       </tbody>
     </table>
-  </div>
+    <p class="side">
+      <img src="tape.png" alt="">
+    </p>
+    </div>
   <script>
     fetch('https://my.api.mockaroo.com/topfilms.json?key=6bb78e90').then((data) => {
       return data.json();
@@ -85,7 +91,7 @@
     crossorigin="anonymous"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-  
+
   <div class="chart">
     <canvas id="Chart"></canvas>
   </div>
