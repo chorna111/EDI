@@ -1,3 +1,3 @@
 # EDI_Project
 
-ehhhh
+EDI Project by Anastasiia Chorna, Jan Doniec & Paweł Burda. 
