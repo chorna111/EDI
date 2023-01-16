@@ -65,6 +65,24 @@
     </p>
     </div>
     <script>
+        fetch('https://raw.githubusercontent.com/chorna111/EDI/main/topfilms.json').then((data)=>{
+            return data.json();
+        }).then((objectData)=>{
+            
+            let tableData="";
+            objectData.map((values)=>{
+                tableData+=`<tr>
+                    <td>${values.Rank}</td>
+                    <td>${values.Title}</td>
+                    <td>${values.Genre}</td>
+                    <td>${values.Released}</td>
+                    <td>${values.Director}</td>
+                    <td>${values.Duration}</td>
+                </tr>`;
+      });
+      document.getElementById("table_body").innerHTML = tableData;
+    });
+  
       document.getElementById("topfilms-button").addEventListener("click",
       function(){
       
@@ -144,6 +162,42 @@ document.getElementById("topfilms2-button").addEventListener("click", function()
   </div>
 
   <script>
+    fetch('https://raw.githubusercontent.com/chorna111/EDI/main/topfilms.json').then((data)=>{
+            return data.json();
+        }).then((objectData)=>{
+   
+      let genres = objectData.map(values => values.Genre);
+      let counts = {};
+      genres.forEach(function (x) { counts[x] = (counts[x] || 0) + 1; });
+      let labels = Object.keys(counts);
+      let data = Object.values(counts);
+      var bgColors = [];
+      var colors = ['#7768A4', '#A46877', '#95A468', '#68A495']
+      for (var i = 0; i < data.length; i++) {
+        bgColors.push(colors[i % colors.length]);
+      }
+      let ctx = document.getElementById('Chart').getContext('2d');
+      let genreChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: "hide",
+            data: data,
+            backgroundColor: bgColors,
+          }]
+        },
+        options: {
+          legend: {
+            display: false
+          },
+          title: {
+            display: true,
+            text: 'Distribution of Movie Genres',
+          },
+        }
+      });
+    });
      document.getElementById("topfilms-button").addEventListener("click",
       function(){
       
@@ -276,6 +330,44 @@ document.getElementById("topfilms2-button").addEventListener("click", function()
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
   <script>
+    fetch('https://raw.githubusercontent.com/chorna111/EDI/main/topfilms.json').then((data)=>{
+            return data.json();
+        }).then((objectData)=>{
+        const durationCounts = {
+          "0-60": 0,
+          "61-120": 0,
+          "121-180": 0,
+          "181+": 0
+        };
+
+        objectData.forEach((movie) => {
+          const duration = parseInt(movie.Duration, 10);
+          if (duration <= 60) {
+            durationCounts["0-60"]++;
+          } else if (duration <= 120) {
+            durationCounts["61-120"]++;
+          } else if (duration <= 180) {
+            durationCounts["121-180"]++;
+          } else {
+            durationCounts["181+"]++;
+          }
+        });
+
+        const ctx = document.getElementById('durationChart').getContext('2d');
+        const chart = new Chart(ctx, {
+          type: 'pie',
+
+          data: {
+            labels: Object.keys(durationCounts),
+            datasets: [{
+              label: 'Movie Duration Distribution',
+              backgroundColor: ['#7768A4', '#A46877', '#95A468', '#68A495'],
+              data: Object.values(durationCounts)
+            }]
+          },
+          options: {}
+        });
+      });
    document.getElementById("topfilms-button").addEventListener("click",
       function(){
       
