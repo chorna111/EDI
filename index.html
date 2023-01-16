@@ -39,6 +39,9 @@
     <p class="side">
       <img src="tape.png" alt="">
     </p>
+      <button id="topfilms-button">Top Films</button>
+  <button id="topfilms1-button">Top Films 1</button>
+  <button id="topfilms2-button">Top Films 2</button>
     <table class="table table-bordered">
       <thead class="table-dark">
         <tr>
@@ -66,7 +69,7 @@
       function(){
       
       
-        fetch('https://github.com/chorna111/EDI/blob/main/topfilms.json').then((data)=>{
+        fetch('https://raw.githubusercontent.com/chorna111/EDI/main/topfilms.json').then((data)=>{
             return data.json();
         }).then((objectData)=>{
             
@@ -85,7 +88,7 @@
     });
   });
   document.getElementById("topfilms1-button").addEventListener("click", function() {
-  fetch('https://github.com/chorna111/EDI/blob/main/topfilms1.json')
+  fetch('https://raw.githubusercontent.com/chorna111/EDI/main/topfilms1.json')
   .then((data)=>{
     return data.json();
   }).then((objectData)=>{
@@ -105,7 +108,7 @@
 });
 
 document.getElementById("topfilms2-button").addEventListener("click", function() {
-  fetch('https://github.com/chorna111/EDI/blob/main/topfilms2.json')
+  fetch('https://raw.githubusercontent.com/chorna111/EDI/main/topfilms2.json')
   .then((data)=>{
     return data.json();
   }).then((objectData)=>{
